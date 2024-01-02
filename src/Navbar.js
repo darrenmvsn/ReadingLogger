@@ -6,11 +6,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
+import { Link } from 'react-router-dom';
 const Navbar = ({logged}) => {
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -35,6 +31,12 @@ const Navbar = ({logged}) => {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Booknotes
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Link style={{textDecoration:"none", color:"white"}} to="/add">
+                Add New Book
+            </Link>
+            
           </Typography>
           {logged && (
             <div>

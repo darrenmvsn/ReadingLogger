@@ -1,0 +1,16 @@
+.add-book{
+    display: flex;
+    margin: auto auto;
+    text-align: center;
+    width:40vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 15%;
+    background-color: antiquewhite;
+    height: 500px;
+    border: inset 1px solid white;
+}
+.add-book:hover{
+    transform: translateY(10px);
+}
