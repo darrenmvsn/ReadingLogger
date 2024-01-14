@@ -5,22 +5,22 @@ import axios from 'axios'
 import {Link, useNavigate} from 'react-router-dom'
 const Signup = ({userDetails, setUserDetails,logged, setLogged}) => {
     const navigate = useNavigate()
-    const handleLogin = async (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault()
         console.log(userDetails);
-        const resp = await axios.post("http://localhost:3002/login", userDetails);
+        const resp = await axios.post("http://localhost:3002/signup", userDetails);
         // console.log(resp.data);
         const msg = await resp.data
-        console.log(resp.status);
-        if (resp.status === 200) {
+        // console.log(resp);
+        if (await msg.success) {
             setLogged(true)
         }
     }
+
     useEffect(()=>{
         if (logged) {
             navigate("/")
-        }
-        
+        }  
     },[logged])
   return (
     <FormGroup className='login' >
@@ -34,7 +34,7 @@ const Signup = ({userDetails, setUserDetails,logged, setLogged}) => {
             <Input type='password' id="pw" aria-describedby="my-helper-text" size="medium" required={true} onChange={(e)=> setUserDetails({...userDetails,password: e.target.value})}/>
             <FormHelperText id="my-helper-text">We'll never share your password.</FormHelperText>
         </FormControl>
-    <Button color='info' type='submit' onClick={(e)=>handleLogin(e)}> Login </Button>
+    <Button color='info' type='submit' onClick={(e)=>handleSignUp(e)}> Sign Up </Button>
     <Link to="/login">
         <FormHelperText>Already have an account</FormHelperText>
     </Link>

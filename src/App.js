@@ -8,11 +8,19 @@ import axios from "axios"
 
 import React,{useState, useEffect} from 'react';
 import {Routes, Route, useNavigate, Navigate} from "react-router-dom"
+import BookList from './BookList';
 function App() {
   const [userDetails, setUserDetails] = useState({email:"", password:""})
   const [logged, setLogged] = useState(false)
   const [displayBooks, setDisplayBooks] = useState([])
+  const [searchBook, setSearchBook] = useState("");
   const navigate = useNavigate()
+  
+  const handleLogout = () => {
+    setLogged(false);
+    setUserDetails({email:"", password:""});
+  }
+  
   useEffect(()=>{
     if (!logged) {
       navigate("/login")
@@ -33,10 +41,10 @@ function App() {
   // },[displayBooks])
   return (
     <>
-    <Navbar logged={logged}/>
+    <Navbar logged={logged} handleLogout = {handleLogout} />
       <Routes>
         <Route path="/" element={<Main displayBooks={displayBooks} />}/>
-        <Route path="/add" element={<FormAddBook  />}/>
+        <Route path="/list" element={<BookList searchBook={searchBook} setSearchBook={setSearchBook} />}/>
         <Route path="/signup" element={<Signup userDetails={userDetails} setUserDetails={setUserDetails} logged={logged} setLogged={setLogged} />}/>
         <Route path="/login" element={<Login userDetails={userDetails} setUserDetails={setUserDetails} logged={logged} setLogged={setLogged} />}/>
       </Routes>

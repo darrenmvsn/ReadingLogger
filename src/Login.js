@@ -7,18 +7,14 @@ const Login = ({userDetails, setUserDetails, setLogged,logged }) => {
     const navigate = useNavigate()
     const handleLogin = async (e) => {
         e.preventDefault()
-        console.log("adaed");
-        
         const resp = await axios.post("http://localhost:3002/login", userDetails);
-        // console.log(resp.data);
-        // const msg =  resp.data
-        console.log("msg");
         const status = await resp.data
-        
-        if (status.success) {
+        // console.log(status);
+        if (await status.success) {
             setLogged(true)
         }
     }
+    
     useEffect(()=>{
         if (logged) {
             navigate("/")
