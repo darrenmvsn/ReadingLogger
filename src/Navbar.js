@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 const pages = ['Home', 'My List', 'News'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function Navbar({logged, handleLogout}) {
+function Navbar({logged, handleLogout, userDetails}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -58,7 +58,7 @@ function Navbar({logged, handleLogout}) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MY READING LOG
           </Typography>
 
           {logged && <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -115,7 +115,7 @@ function Navbar({logged, handleLogout}) {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            MY READING LOG
           </Typography>
 
           {logged && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -131,11 +131,11 @@ function Navbar({logged, handleLogout}) {
               </Link>
             ))}
           </Box> }
-
+ 
           {logged && <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt={userDetails.email} src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu

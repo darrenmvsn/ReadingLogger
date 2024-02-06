@@ -41,7 +41,7 @@ function App() {
   // },[displayBooks])
   return (
     <>
-    <Navbar logged={logged} handleLogout = {handleLogout} />
+    <Navbar logged={logged} handleLogout = {handleLogout} userDetails={userDetails} />
       <Routes>
         <Route path="/" element={<Main displayBooks={displayBooks} />}/>
         <Route path="/list" element={<BookList searchBook={searchBook} setSearchBook={setSearchBook} />}/>
